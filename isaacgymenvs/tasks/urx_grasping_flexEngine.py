@@ -147,7 +147,7 @@ class URxGraspingFlex(VecTask):
 
         # Gripper defaults
         self.gripper_default_dof_pos = to_torch(
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device=self.device
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], device=self.device
         )
 
         # OSC Gains
@@ -298,15 +298,21 @@ class URxGraspingFlex(VecTask):
         self.box_size = 0.025
         asset_options = gymapi.AssetOptions()
         asset_options.fix_base_link = True
-
         box_asset = self.gym.create_box(self.sim, *([self.box_size] * 3), asset_options)
         box_color = gymapi.Vec3(0.0, 0.4, 0.1)
-
         box_pose = gymapi.Transform()
+
+        # create table asset
+        table_dims = gymapi.Vec3(0.6, 1.0, 0.1)
+        asset_options = gymapi.AssetOptions()
+        asset_options.fix_base_link = True
+        table_asset = self.gym.create_box(self.sim, table_dims.x, table_dims.y, table_dims.z, asset_options)
+        table_pose = gymapi.Transform()
+        table_pose.p = gymapi.Vec3(0.5, 0.0, 0.5 * table_dims.z)
 
         # soft body pose
         softbody_pose = gymapi.Transform()
-        softbody_pose.p.z = 0.5
+        # softbody_pose.p.z = 0.5
         softbody_pose.r = gymapi.Quat(0, 0, 0, 1)
 
         self.box_idxs = []
@@ -350,8 +356,12 @@ class URxGraspingFlex(VecTask):
 
             _actor_root_state_tensor = self.gym.acquire_actor_root_state_tensor(self.sim)
             self._root_state = gymtorch.wrap_tensor(_actor_root_state_tensor)
-
+            # add table
+            table_handle = self.gym.create_actor(env_ptr, table_asset, table_pose, "table", i, 0)
             # add soft body + rail actor
+            softbody_pose.p.x = table_pose.p.x + np.random.uniform(-0.2, 0.1)
+            softbody_pose.p.y = table_pose.p.y + np.random.uniform(-0.3, 0.3)
+            softbody_pose.p.z = table_dims.z + 0.01
             soft_actor = self.gym.create_actor(env_ptr, soft_asset, softbody_pose, "soft", i, 0)
             # set soft material within a range of default
             actor_default_soft_materials = self.gym.get_actor_soft_materials(env_ptr, soft_actor)

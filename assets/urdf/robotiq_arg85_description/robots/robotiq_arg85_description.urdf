@@ -102,129 +102,129 @@
 		<limit effort="2000.0" lower="-3.14" upper="3.14" velocity="500"/>
 		<origin rpy="0 0 0" xyz="0.0 0.0 -0.0"/>
 		<parent link="rev_linkz"/>
-		<child link="rev_link_twist"/>
-	</joint>
-
-
-  	<link name="rev_link_twist">
-		<inertial>
-		  <mass value="0.001"/>
-		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>
-		</inertial>
-	</link>
-
-
-	<joint name="rev_twist" type="revolute">
-		<axis xyz="0 0 1"/>
-		<dynamics damping="10.0" friction="0.0"/>
-		<limit effort="2000" lower="-3.14" upper="3.14" velocity="500"/>
-		<origin rpy="0 0 0" xyz="0.0 -0.0 0.0"/>
-		<parent link="rev_link_twist"/>
-		<child link="rev_link1"/>
-	</joint>
-
-  	<link name="rev_link1">
-		<inertial>
-		  <mass value="0.001"/>
-		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>
-		  <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-		</inertial>
-	</link>
-
-
-
-	<joint name="rev_joint1" type="revolute">
-		<axis xyz="0 0 1"/>
-		<dynamics damping="10.0" friction="0.0"/>
-		<limit effort="2000" lower="-3.14" upper="3.14" velocity="500"/>
-		<origin rpy="0 0 0" xyz="0.0 0.0 -0.112"/>
-		<parent link="rev_link1"/>
-		<child link="rev_link2"/>
-	</joint>
-
-  	<link name="rev_link2">
-		<inertial>
-		  <mass value="0.001"/>
-		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>
-		</inertial>
-	</link>
-
-
-	<joint name="rev_joint2" type="revolute">
-		<axis xyz="0 1 0"/>
-		<limit effort="2000" lower="-3.14" upper="3.14" velocity="200"/>
-		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
-		<parent link="rev_link2"/>
-		<child link="rev_link3"/>
-	</joint>
-
-
-	<link name="rev_link3">
-		<inertial>
-		  <mass value="0.001"/>
-		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>
-		</inertial>
-	</link>
-
-	<joint name="rev_joint3" type="revolute">
-		<axis xyz="1 0 0"/>
-		<dynamics damping="10.0" friction="0.0"/>
-		<limit effort="2000" lower="-3.14" upper="3.14" velocity="200"/>
-		<origin rpy="0 0 0" xyz="0.0 0.0 -0.0"/>
-		<parent link="rev_link3"/>
-		<child link="slide_x"/>
-	</joint>
-
-	<link name="slide_x">
-		<inertial>
-		  <mass value="0.001"/>
-		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>
-		</inertial>
-	</link>
-
-	<joint name="slide_jointx" type="prismatic">
-		<parent link="slide_x"/>
-		<child link="slide_y"/>
-		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-		<axis xyz="1 0 0"/>
-		<dynamics damping="10.0" friction="0.0"/>
-		<limit lower="-1" upper="1" velocity="2000" effort="2000"/>
-	</joint>
-
-
-  	<link name="slide_y">
-		<inertial>
-		  <mass value="0.001"/>
-		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>
-		</inertial>
-	</link>
-
-	<joint name="slide_jointy" type="prismatic">
-		<parent link="slide_y"/>
-		<child link="slide_z"/>
-		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-		<axis xyz="0 1 0"/>
-		<dynamics damping="10.0" friction="0.0"/>
-		<limit lower="-1" upper="1" velocity="2000" effort="2000"/>
-	</joint>
-
-
-  	<link name="slide_z">
-		<inertial>
-		  <mass value="0.001"/>
-		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>
-		</inertial>
-	</link>
-
-
-	<joint name="slide_jointz" type="prismatic">
-		<parent link="slide_z"/>
 		<child link="robotiq_85_base_link"/>
-		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
-		<axis xyz="0 0 1"/>
-		<dynamics damping="10.0" friction="0.0"/>
-		<limit lower="-1" upper="1" velocity="2000" effort="2000"/>
 	</joint>
+
+
+<!--  	<link name="rev_link_twist">-->
+<!--		<inertial>-->
+<!--		  <mass value="0.001"/>-->
+<!--		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>-->
+<!--		</inertial>-->
+<!--	</link>-->
+
+
+<!--	<joint name="rev_twist" type="revolute">-->
+<!--		<axis xyz="0 0 1"/>-->
+<!--		<dynamics damping="10.0" friction="0.0"/>-->
+<!--		<limit effort="2000" lower="-3.14" upper="3.14" velocity="500"/>-->
+<!--		<origin rpy="0 0 0" xyz="0.0 -0.0 0.0"/>-->
+<!--		<parent link="rev_link_twist"/>-->
+<!--		<child link="rev_link1"/>-->
+<!--	</joint>-->
+
+<!--  	<link name="rev_link1">-->
+<!--		<inertial>-->
+<!--		  <mass value="0.001"/>-->
+<!--		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>-->
+<!--		  <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>-->
+<!--		</inertial>-->
+<!--	</link>-->
+
+
+
+<!--	<joint name="rev_joint1" type="revolute">-->
+<!--		<axis xyz="0 0 1"/>-->
+<!--		<dynamics damping="10.0" friction="0.0"/>-->
+<!--		<limit effort="2000" lower="-3.14" upper="3.14" velocity="500"/>-->
+<!--		<origin rpy="0 0 0" xyz="0.0 0.0 -0.112"/>-->
+<!--		<parent link="rev_link1"/>-->
+<!--		<child link="rev_link2"/>-->
+<!--	</joint>-->
+
+<!--  	<link name="rev_link2">-->
+<!--		<inertial>-->
+<!--		  <mass value="0.001"/>-->
+<!--		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>-->
+<!--		</inertial>-->
+<!--	</link>-->
+
+
+<!--	<joint name="rev_joint2" type="revolute">-->
+<!--		<axis xyz="0 1 0"/>-->
+<!--		<limit effort="2000" lower="-3.14" upper="3.14" velocity="200"/>-->
+<!--		<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>-->
+<!--		<parent link="rev_link2"/>-->
+<!--		<child link="rev_link3"/>-->
+<!--	</joint>-->
+
+
+<!--	<link name="rev_link3">-->
+<!--		<inertial>-->
+<!--		  <mass value="0.001"/>-->
+<!--		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>-->
+<!--		</inertial>-->
+<!--	</link>-->
+
+<!--	<joint name="rev_joint3" type="revolute">-->
+<!--		<axis xyz="1 0 0"/>-->
+<!--		<dynamics damping="10.0" friction="0.0"/>-->
+<!--		<limit effort="2000" lower="-3.14" upper="3.14" velocity="200"/>-->
+<!--		<origin rpy="0 0 0" xyz="0.0 0.0 -0.0"/>-->
+<!--		<parent link="rev_link3"/>-->
+<!--		<child link="slide_x"/>-->
+<!--	</joint>-->
+
+<!--	<link name="slide_x">-->
+<!--		<inertial>-->
+<!--		  <mass value="0.001"/>-->
+<!--		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>-->
+<!--		</inertial>-->
+<!--	</link>-->
+
+<!--	<joint name="slide_jointx" type="prismatic">-->
+<!--		<parent link="slide_x"/>-->
+<!--		<child link="slide_y"/>-->
+<!--		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>-->
+<!--		<axis xyz="1 0 0"/>-->
+<!--		<dynamics damping="10.0" friction="0.0"/>-->
+<!--		<limit lower="-1" upper="1" velocity="2000" effort="2000"/>-->
+<!--	</joint>-->
+
+
+<!--  	<link name="slide_y">-->
+<!--		<inertial>-->
+<!--		  <mass value="0.001"/>-->
+<!--		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>-->
+<!--		</inertial>-->
+<!--	</link>-->
+
+<!--	<joint name="slide_jointy" type="prismatic">-->
+<!--		<parent link="slide_y"/>-->
+<!--		<child link="slide_z"/>-->
+<!--		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>-->
+<!--		<axis xyz="0 1 0"/>-->
+<!--		<dynamics damping="10.0" friction="0.0"/>-->
+<!--		<limit lower="-1" upper="1" velocity="2000" effort="2000"/>-->
+<!--	</joint>-->
+
+
+<!--  	<link name="slide_z">-->
+<!--		<inertial>-->
+<!--		  <mass value="0.001"/>-->
+<!--		  <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0.0" ixz="0.0" iyz="0.0"/>-->
+<!--		</inertial>-->
+<!--	</link>-->
+
+
+<!--	<joint name="slide_jointz" type="prismatic">-->
+<!--		<parent link="slide_z"/>-->
+<!--		<child link="robotiq_85_base_link"/>-->
+<!--		<origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>-->
+<!--		<axis xyz="0 0 1"/>-->
+<!--		<dynamics damping="10.0" friction="0.0"/>-->
+<!--		<limit lower="-1" upper="1" velocity="2000" effort="2000"/>-->
+<!--	</joint>-->
 
   <link name="robotiq_85_base_link">
     <inertial>
